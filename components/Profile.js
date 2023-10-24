@@ -6,9 +6,7 @@ const Profile = () => {
   const [mount, setMount] = useState(false);
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-  useEffect(() => {
-    setMount(true);
-  }, []);
+  useEffect(() => setMount(true), []);
   return (
     mount && (
       <div>
