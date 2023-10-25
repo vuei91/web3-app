@@ -1,3 +1,4 @@
+import Contract from "@/components/Contract";
 import Informaion from "@/components/Information";
 import Profile from "@/components/Profile";
 
@@ -7,6 +8,9 @@ const Home = () => {
       <Profile />
       <div>
         <Informaion />
+      </div>
+      <div>
+        <Contract />
       </div>
     </>
   );
