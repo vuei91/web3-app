@@ -1,26 +1,24 @@
 "use client";
 import React from "react";
-import { useAccount, useContractRead } from "wagmi";
+import { useAccount, useContractRead, useContractReads } from "wagmi";
 import VTokenABI from "@/abi/VTokenABI.json";
+
+const VTokenContract = {
+  address: "0xFd59f3889524DbeEEB07233a9eDe612fFAE78cE9",
+  abi: VTokenABI,
+};
 
 const Contract = () => {
   const { address } = useAccount();
-  const { data: balanceOf } = useContractRead({
-    address: "0xFd59f3889524DbeEEB07233a9eDe612fFAE78cE9",
-    abi: VTokenABI,
-    functionName: "balanceOf",
-    args: [address],
+  const { data } = useContractReads({
+    contracts: [
+      { ...VTokenContract, functionName: "balanceOf", args: [address] },
+      { ...VTokenContract, functionName: "decimals" },
+      { ...VTokenContract, functionName: "symbol" },
+    ],
   });
-  const { data: decimals } = useContractRead({
-    address: "0xFd59f3889524DbeEEB07233a9eDe612fFAE78cE9",
-    abi: VTokenABI,
-    functionName: "decimals",
-  });
-  const { data: symbol } = useContractRead({
-    address: "0xFd59f3889524DbeEEB07233a9eDe612fFAE78cE9",
-    abi: VTokenABI,
-    functionName: "symbol",
-  });
+  const [{ result: balanceOf }, { result: decimals }, { result: symbol }] =
+    data;
   return (
     <div>
       <div style={{ borderTop: "1px solid", margin: "10px 0" }}></div>
