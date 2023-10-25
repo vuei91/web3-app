@@ -1,6 +1,7 @@
-import Contract from "@/components/Contract";
+import ReadContract from "@/components/ReadContract";
 import Informaion from "@/components/Information";
 import Profile from "@/components/Profile";
+import WriteContract from "@/components/WriteContract";
 
 const Home = () => {
   return (
@@ -10,7 +11,10 @@ const Home = () => {
         <Informaion />
       </div>
       <div>
-        <Contract />
+        <ReadContract />
+      </div>
+      <div>
+        <WriteContract />
       </div>
     </>
   );

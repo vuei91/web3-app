@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useAccount, useContractRead, useContractReads } from "wagmi";
+import { useAccount, useContractReads } from "wagmi";
 import VTokenABI from "@/abi/VTokenABI.json";
 
 const VTokenContract = {
@@ -10,13 +10,14 @@ const VTokenContract = {
 
 const Contract = () => {
   const { address } = useAccount();
-  const { data } = useContractReads({
+  const { data, isLoading } = useContractReads({
     contracts: [
       { ...VTokenContract, functionName: "balanceOf", args: [address] },
       { ...VTokenContract, functionName: "decimals" },
       { ...VTokenContract, functionName: "symbol" },
     ],
   });
+  if (isLoading) return null;
   const [{ result: balanceOf }, { result: decimals }, { result: symbol }] =
     data;
   return (
