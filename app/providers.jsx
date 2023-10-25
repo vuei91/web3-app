@@ -1,6 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { WagmiConfig, createConfig, configureChains, sepolia } from "wagmi";
+import {
+  WagmiConfig,
+  createConfig,
+  configureChains,
+  sepolia,
+  mainnet,
+} from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 
 // connectors
@@ -9,7 +15,10 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
-const { chains, publicClient } = configureChains([sepolia], [publicProvider()]);
+const { chains, publicClient } = configureChains(
+  [mainnet, sepolia],
+  [publicProvider()]
+);
 
 const config = createConfig({
   publicClient,

@@ -36,7 +36,8 @@ const Informaion = () => {
       </div>
       {chains && (
         <div>
-          <strong>Available chains:</strong> {chains.map((chain) => chain.name)}
+          <strong>Available chains:</strong>{" "}
+          {chains.map((chain) => chain.name + ",")}
         </div>
       )}
       <div>
