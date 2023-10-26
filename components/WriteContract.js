@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import { useContractWrite } from "wagmi";
 import VTokenABI from "@/abi/VTokenABI";
 
 const WriteContract = () => {
@@ -33,7 +33,7 @@ const WriteContract = () => {
         <button
           onClick={() => {
             transfer?.({
-              args: [address, amount * 1e18],
+              args: [address, BigInt(amount) * BigInt(1e18)],
             });
           }}
         >
