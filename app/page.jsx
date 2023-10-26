@@ -2,6 +2,7 @@ import ReadContract from "@/components/ReadContract";
 import Informaion from "@/components/Information";
 import Profile from "@/components/Profile";
 import WriteContract from "@/components/WriteContract";
+import Event from "@/components/Event";
 
 const Home = () => {
   return (
@@ -15,6 +16,9 @@ const Home = () => {
       </div>
       <div>
         <WriteContract />
+      </div>
+      <div>
+        <Event />
       </div>
     </>
   );
