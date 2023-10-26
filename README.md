@@ -5,7 +5,7 @@
 ### Setup
 
 Config - 설정을 진행함 -> React Hooks를 사용할수 있었음 (useXXX)
-\<WagmiConfig config={config}></WagmiConfig>
+\<WagmiConfig config={config}>\</WagmiConfig>
 
 ### Connect
 
