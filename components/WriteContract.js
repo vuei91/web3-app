@@ -6,13 +6,11 @@ import VTokenABI from "@/abi/VTokenABI";
 const WriteContract = () => {
   const [address, setAddress] = useState("");
   const [amount, setAmount] = useState(0);
-  const { config, error } = usePrepareContractWrite({
+  const { write: transfer } = useContractWrite({
     address: "0xFd59f3889524DbeEEB07233a9eDe612fFAE78cE9",
     abi: VTokenABI,
     functionName: "transfer",
-    args: [address, amount * 10 ** 18],
   });
-  const { write: transfer } = useContractWrite(config);
   return (
     <div>
       <div>
@@ -34,7 +32,9 @@ const WriteContract = () => {
       <div>
         <button
           onClick={() => {
-            transfer?.();
+            transfer?.({
+              args: [address, amount * 1e18],
+            });
           }}
         >
           transfer

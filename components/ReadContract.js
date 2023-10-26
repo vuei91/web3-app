@@ -29,7 +29,7 @@ const Contract = () => {
       </p>
       <p>
         <strong>BalanceOf :</strong>
-        {(parseInt(balanceOf) / 10 ** decimals).toLocaleString()} {symbol}
+        {(balanceOf / BigInt(10 ** decimals)).toLocaleString()} {symbol}
       </p>
     </div>
   );
